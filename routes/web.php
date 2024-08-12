@@ -26,5 +26,8 @@ return view('contact');
 //  //return view('product.product');
 // });
 
+Route::get('/category/create',[\App\http\Controllers\CategoryController::class,'create']);
+Route::post('/category/store',[\App\http\Controllers\CategoryController::class,'store']);
+
 Route::get('/product',[\App\http\Controllers\ProductController::class,'product']);
 Route::get('/product/form',[\App\http\Controllers\ProductController::class,'addItem']);

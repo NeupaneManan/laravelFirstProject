@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @include('backend.includes.css')
     <title>Document</title>
 </head>
 <body>
@@ -12,5 +13,7 @@
     @yield('content')
     {{--body--}}
     @include ('backend.includes.footer')
+
+    @include('backend.includes.js')
 </body>
 </html>
