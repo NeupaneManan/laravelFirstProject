@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Category</h1>
+            <h1>Brand</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -27,10 +27,9 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Add Category</h3>
+                <h3 class="card-title">Update brand</h3>
               </div>
-
-                <!-- Error Message-->
+            <!-- Error Message-->
               @if ($errors->any())
               @foreach ($errors->all() as $error)
               <div class="ml-3">
@@ -38,29 +37,27 @@
               </div>
               @endforeach
               @endif
-            <!-- Error Message-->
-
-           
-              <!-- Success Message -->
+              <!-- Error Message-->
+               <!-- Success Message -->
               @if (session()->has('message'))
               <div class="alert alert-success">
               {{session()->get('message')}}
               </div>
               @endif
                <!-- success Message -->
-              <!-- /.card-header -->
 
+              <!-- /.card-header -->
               <!-- form start -->
-              <form method="POST" action="/category/store">
+              <form method="POST" action="/brand/update/{{$brand->id}}">
                 @csrf 
                 <div class="card-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Title:</label>
-                    <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="text" name="title" class="form-control" id="exampleInputEmail1"value="{{$brand->title}}">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Description:</label>
-                    <input type="text" name="description" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="text" name="description" class="form-control" id="exampleInputPassword1" value="{{$brand->description}}">
                   </div>
                   <!-- <div class="form-group">
                     <label for="exampleInputFile">File input</label>
@@ -82,7 +79,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary">Update</button>
                 </div>
               </form>
             </div>

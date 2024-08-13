@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class BrandController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $category = Category::all();
-        return view("backend.Category.index", compact('category'));
+         $brand = Brand::all();
+        return view("backend.Brand.index", compact('brand'));
     }
 
     /**
@@ -21,7 +21,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.category.create');
+         return view('backend.brand.create');
     }
 
     /**
@@ -29,15 +29,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-    //    dd($request->all());
-    $request->validate([
+         $request->validate([
         'title' =>"required",
         "description"=> "required"
     ]);
-       $category = new Category();
-       $category->title = $request->title;
-       $category->description = $request->description;
-       $category->save();
+       $brand = new Brand();
+       $brand->title = $request->title;
+       $brand->description = $request->description;
+       $brand->save();
        return redirect()->back()->with('message','Data saved Sucessfully');
     }
 
@@ -54,8 +53,8 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $category = Category::find($id);//Category vaneko Model
-        return view('backend.category.edit',compact('category'));
+         $brand = Brand::find($id);//Category vaneko Model
+        return view('backend.brand.edit',compact('brand'));
     }
 
     /**
@@ -63,14 +62,14 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-          $request->validate([
+        $request->validate([
         'title' =>"required",
         "description"=> "required"
     ]);
-        $category = Category::find($id);
-       $category->title = $request->title;
-       $category->description = $request->description;
-       $category->save();
+        $brand = Brand::find($id);
+       $brand->title = $request->title;
+       $brand->description = $request->description;
+       $brand->save();
        return redirect()->back()->with('message','Data saved Sucessfully');
     }
 
@@ -79,8 +78,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $category = Category::find($id);
-        $category->delete();
+        $brand =  Brand::find($id);
+        $brand->delete();
         return redirect()->back()->with('message','Data Deleted Sucessfully');
     }
 }
