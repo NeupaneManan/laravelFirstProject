@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Models\product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class productController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,8 @@ class ProductController extends Controller
     public function index()
     {
         $product = Product::all();
-        return view("backend.product.index", compact('product'));
-    }
+        return view("backend.product.index",compact("product"));
+    }   
 
     /**
      * Show the form for creating a new resource.
@@ -33,7 +33,7 @@ class ProductController extends Controller
         'title' =>"required",
         "description"=> "required"
     ]);
-       $product = new Product();
+       $product = new product();
        $product->title = $request->title;
        $product->description = $request->description;
        $product->price = $request->price;
@@ -64,7 +64,7 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-         $product = Product::find($id);
+         $product = product::find($id);
         return view('backend.product.edit',compact('product'));
     }
 
@@ -77,7 +77,7 @@ class ProductController extends Controller
         'title' =>"required",
         "description"=> "required"
     ]);
-        $product = Product::find($id);
+        $product = product::find($id);
        $product->title = $request->title;
        $product->description = $request->description;
        $product->price = $request->price;
@@ -100,7 +100,7 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        $product = Product::find($id);
+        $product = product::find($id);
         $product->delete();
         return redirect()->back()->with('message','Data Deleted Sucessfully');
     }
