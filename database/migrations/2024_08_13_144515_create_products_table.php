@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('description');
             $table->float('price');
             $table->string('image')->nullable();
-            $table->integer('brand_id')->nullable();
-            $table->integer('category_id')->nullable();
+            $table->foreignId('brand_id')->constrained()->onDelete('cascade');
+            $table->integer('category_id')->constrained()->onDelete('cascade');
             $table->integer('stock');
             $table->integer('quantity');
             $table->string('color');

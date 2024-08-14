@@ -14,11 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/contact',function(){
-return view('contact');
-});
 
-
+Route::get('/',[\App\http\Controllers\frontendController::class,'index']);
 
 
 //Category Route
@@ -29,7 +26,7 @@ Route::get('/category/edit/{id}',[\App\http\Controllers\CategoryController::clas
 Route::post('/category/update/{id}',[\App\http\Controllers\CategoryController::class,'update']);
 Route::get('/product',[\App\http\Controllers\productController::class,'product']);
 Route::get('/product/form',[\App\http\Controllers\productController::class,'addItem']);
-Route::get('/',[\App\http\Controllers\CategoryController::class,'index']);
+Route::get('/category',[\App\http\Controllers\CategoryController::class,'index']);
 
 
 //Brand Route

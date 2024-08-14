@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\product;
 use Illuminate\Http\Request;
 
@@ -21,7 +23,9 @@ class productController extends Controller
      */
     public function create()
     {
-          return view('backend.product.create');
+        $brand = Brand::all();
+        $category = Category::all();
+          return view('backend.product.create',compact('category','brand'));
     }
 
     /**
@@ -38,9 +42,11 @@ class productController extends Controller
        $product->description = $request->description;
        $product->price = $request->price;
        $image= $request->image;
+       if($request->hasFile("image")){
        $image_new_name=time().$image->getClientOriginalName();
        $image->move('product',$image_new_name);
        $product->image = $image_new_name;
+       }
        $product->brand_id = $request->brand_id;
        $product->category_id =$request->category_id;
        $product->stock = $request->stock;

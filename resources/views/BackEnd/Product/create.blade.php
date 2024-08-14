@@ -76,12 +76,21 @@
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Brand Id:</label>
-                    <input type="number" name="brand_id" class="form-control" id="exampleInputPassword1">
+                    
+                    <select class="form-control"  name="brand_id" placeholder="Select Your Category" >
+                          @foreach ($brand as $b)
+                           <option value="{{$b->id}}">{{$b->title}}</option>
+                          @endforeach
+                        </select>
                   </div>
 
                   <div class="form-group">
                     <label for="exampleInputPassword1">Category Id:</label>
-                    <input type="number" name="category_id" class="form-control" id="exampleInputPassword1">
+                    <select class="form-control" name=" category_id" placeholder="Select Your Category">
+                            @foreach ($category as $c)
+                           <option value="{{$c->id}}">{{$c->title}}</option>
+                          @endforeach
+                        </select>
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Stock:</label>
