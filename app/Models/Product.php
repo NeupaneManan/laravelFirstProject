@@ -14,7 +14,6 @@ class Product extends Model
         'stock','quantity','color','size'];
         public function brand()
         {
-            $this->hasOne(Brand::class,'brand_id','id');
+           return $this->hasOne(Brand::class,'id','brand_id');
         }
-
-}
+    }
